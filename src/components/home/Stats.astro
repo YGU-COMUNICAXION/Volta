@@ -1,0 +1,40 @@
+---
+import { Image } from "astro:assets";
+import iconEnergy from "@assets/svg/home/lightning.svg";
+import iconFactory from "@assets/svg/home/factory.svg";
+import iconCo2 from "@assets/svg/home/courthouse.svg";
+import iconBuildings from "@assets/svg/home/courthouse.svg";
+---
+
+<section class="bg-primary py-16 text-white">
+  <div class="container mx-auto px-4">
+    <h2 class="text-center text-2xl font-medium lg:text-4xl xl:text-5xl">
+      Nuestra huella en números
+    </h2>
+    <div class="mt-10 grid gap-8 text-center md:grid-cols-2 lg:grid-cols-4">
+      <div class="flex flex-col items-center gap-3">
+        <p class="text-5xl lg:text-7xl font-semibold">176 +</p>
+        <p class="text-base lg:text-xl text-white/80">
+          180 GWh de generación y suministro registrados en todo México
+        </p>
+      </div>
+      <div class="flex flex-col items-center gap-3">
+        <Image src={iconFactory} alt="Operación" class="size-12 lg:size-20" />
+
+        <p class="text-base lg:text-xl text-white/80">
+          Operación en centrales de generación distribuida en el MEM
+        </p>
+      </div>
+      <div class="flex flex-col items-center gap-3">
+        <p class="text-5xl lg:text-7xl font-semibold">+70 mil</p>
+        <p class="text-base lg:text-xl text-white/80">Toneladas de CO₂.</p>
+      </div>
+      <div class="flex flex-col items-center gap-3">
+        <Image src={iconBuildings} alt="Presencia" class="size-12 lg:size-20" />
+        <p class="text-base lg:text-xl text-white/80">
+          Presencia en CDMX, Bajío y Houston
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
