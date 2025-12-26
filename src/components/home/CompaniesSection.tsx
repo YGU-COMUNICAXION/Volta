@@ -62,17 +62,24 @@ export default function CompaniesSection() {
               key={company.id}
               type="button"
               onClick={() => setActiveCompany(company)}
-              className="group flex h-full flex-col items-center gap-4 rounded-2xl border border-black/10 bg-white px-6 py-8 text-left shadow-sm transition hover:-translate-y-1 hover:border-primary"
+              className="group relative flex flex-col items-center pt-10 transition hover:-translate-y-1"
             >
-              <div className="flex h-16 items-center justify-center">
+              <div className="absolute -top-2 flex h-16 w-16 items-center justify-center rounded-full bg-white">
                 <img
                   src={resolveLogo(company.logo)}
                   alt={`Logo ${company.name}`}
-                  className="h-12 w-auto"
+                  className="h-10 w-auto"
                 />
               </div>
-              <div className="h-px w-12 bg-primary" />
-              <p className="text-sm text-black/70">{company.description}</p>
+              <div
+                className="flex h-full w-full flex-col items-center gap-4 border border-black/20 bg-white px-6 py-8 text-center"
+                style={{
+                  clipPath: "polygon(8% 0%, 92% 0%, 100% 100%, 0% 100%)",
+                }}
+              >
+                <div className="mt-6 h-px w-12 bg-primary" />
+                <p className="text-sm text-black/70">{company.description}</p>
+              </div>
             </button>
           ))}
         </div>
