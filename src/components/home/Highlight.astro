@@ -1,10 +1,10 @@
 ---
 import { Image } from "astro:assets";
-import highlightImage from "@assets/img/home/placasSolares.jpg";
+import highlightImage from "@assets/img/home/trabajadores.jpg";
 ---
 
 <section class="bg-primary text-white">
-  <div class="container mx-auto grid gap-0 lg:grid-cols-[1.2fr_1fr]">
+  <div class="grid gap-0 lg:grid-cols-[1.2fr_1fr]">
     <div class="h-64 lg:h-80">
       <Image
         src={highlightImage}
@@ -12,10 +12,10 @@ import highlightImage from "@assets/img/home/placasSolares.jpg";
         class="h-full w-full object-cover"
       />
     </div>
-    <div class="flex flex-col justify-center gap-4 px-6 py-8 text-sm lg:px-10 lg:text-base">
-      <p>
-        • Tres generaciones de experiencia en el sector energético.
-      </p>
+    <div
+      class="flex flex-col justify-center gap-4 px-6 py-8 text-base lg:px-10 lg:text-xl"
+    >
+      <p>• Tres generaciones de experiencia en el sector energético.</p>
       <p>
         • Líderes en financiamiento y generación de energías limpias en México.
       </p>

@@ -1,8 +1,8 @@
 ---
 import { Image } from "astro:assets";
-import approachImage from "@assets/img/home/trabajadores.jpg";
+import approachImage from "@assets/img/home/placasSolares.jpg";
 import iconAnalysis from "@assets/svg/home/Scan_alt.svg";
-import iconCommitment from "@assets/svg/home/flash-circle.svg";
+import iconCommitment from "@assets/svg/home/lightning.svg";
 import iconInvestment from "@assets/svg/home/Line_up.svg";
 ---
 
@@ -13,7 +13,7 @@ import iconInvestment from "@assets/svg/home/Line_up.svg";
       alt="Equipo de trabajo en planta solar"
       class="h-full w-full object-cover"
     />
-    <div class="absolute inset-0 bg-black/50"></div>
+    <div class="absolute inset-0 bg-black/40"></div>
   </div>
   <div class="relative container mx-auto px-4 py-16">
     <div class="grid gap-8 lg:grid-cols-[1fr_2fr] lg:items-center">
@@ -23,28 +23,40 @@ import iconInvestment from "@assets/svg/home/Line_up.svg";
       <div class="grid gap-6 md:grid-cols-3">
         <div class="flex flex-col items-start gap-3">
           <div class="rounded-lg bg-primary p-3">
-            <Image src={iconAnalysis} alt="Análisis" class="h-6 w-6" />
+            <Image
+              src={iconAnalysis}
+              alt="Análisis"
+              class="size-8 lg:size-12"
+            />
           </div>
-          <h3 class="text-base font-semibold">Análisis</h3>
-          <p class="text-sm text-white/90">
+          <h3 class="text-base lg:text-lg font-semibold">Análisis</h3>
+          <p class="text-base lg:text-lg text-white/90">
             Análisis estratégico y gestión inteligente de riesgos.
           </p>
         </div>
         <div class="flex flex-col items-start gap-3">
           <div class="rounded-lg bg-primary p-3">
-            <Image src={iconCommitment} alt="Compromiso" class="h-6 w-6" />
+            <Image
+              src={iconCommitment}
+              alt="Compromiso"
+              class="size-8 lg:size-12"
+            />
           </div>
-          <h3 class="text-base font-semibold">Compromiso</h3>
-          <p class="text-sm text-white/90">
+          <h3 class="text-base lg:text-lg font-semibold">Compromiso</h3>
+          <p class="text-base lg:text-lg text-white/90">
             Compromiso con la cadena de valor.
           </p>
         </div>
         <div class="flex flex-col items-start gap-3">
           <div class="rounded-lg bg-primary p-3">
-            <Image src={iconInvestment} alt="Inversión" class="h-6 w-6" />
+            <Image
+              src={iconInvestment}
+              alt="Inversión"
+              class="size-8 lg:size-12"
+            />
           </div>
-          <h3 class="text-base font-semibold">Inversión</h3>
-          <p class="text-sm text-white/90">
+          <h3 class="text-base lg:text-lg font-semibold">Inversión</h3>
+          <p class="text-base lg:text-lg text-white/90">
             Inversiones en energías renovables.
           </p>
         </div>
