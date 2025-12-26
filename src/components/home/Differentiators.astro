@@ -1,0 +1,73 @@
+---
+import { Image } from "astro:assets";
+import diffImage from "@assets/img/home/bgDiferente.jpg";
+import iconIntegration from "@assets/svg/home/share.svg";
+import iconCompliance from "@assets/svg/home/book-square.svg";
+import iconSolutions from "@assets/svg/home/lightning.svg";
+import iconManagement from "@assets/svg/home/hierarchy-2.svg";
+import iconDevelopment from "@assets/svg/home/buildings-2.svg";
+import iconOperations from "@assets/svg/home/data-2.svg";
+---
+
+<section class="bg-white text-black">
+  <div class="container mx-auto grid gap-8 px-4 py-16 lg:grid-cols-[1fr_1.3fr] lg:items-center">
+    <div>
+      <h2 class="text-2xl font-semibold lg:text-4xl">Lo que nos hace diferentes</h2>
+      <p class="mt-4 text-sm text-black/70 lg:text-base">
+        En VOLTA integramos más de 80 años de experiencia en el sector energético
+        con una estructura sólida que cubre toda la cadena de valor: desde la
+        construcción de infraestructura hasta la comercialización y suministro de
+        energía.
+      </p>
+      <p class="mt-4 text-sm text-black/70 lg:text-base">
+        Nuestra plataforma de inversión está diseñada para crecer junto a
+        nuestros socios, garantizando retornos financieros atractivos y un
+        estricto cumplimiento normativo en cada etapa.
+      </p>
+    </div>
+    <div class="relative overflow-hidden rounded-3xl text-white">
+      <div class="absolute inset-0">
+        <Image
+          src={diffImage}
+          alt="Infraestructura solar"
+          class="h-full w-full object-cover"
+        />
+        <div class="absolute inset-0 bg-black/60"></div>
+      </div>
+      <div class="relative grid gap-4 p-6 md:grid-cols-2">
+        <div class="rounded-2xl border border-white/30 bg-white/10 p-4">
+          <Image src={iconIntegration} alt="Integración" class="h-6 w-6" />
+          <p class="mt-3 text-sm">
+            Integración vertical gracias a la sinergia de nuestras empresas.
+          </p>
+        </div>
+        <div class="rounded-2xl border border-white/30 bg-white/10 p-4">
+          <Image src={iconCompliance} alt="Cumplimiento" class="h-6 w-6" />
+          <p class="mt-3 text-sm">Cumplimiento con la normatividad vigente.</p>
+        </div>
+        <div class="rounded-2xl border border-white/30 bg-white/10 p-4">
+          <Image src={iconSolutions} alt="Soluciones" class="h-6 w-6" />
+          <p class="mt-3 text-sm">
+            Soluciones energéticas hechas a la medida de cada socio.
+          </p>
+        </div>
+        <div class="rounded-2xl border border-white/30 bg-white/10 p-4">
+          <Image src={iconManagement} alt="Gestión" class="h-6 w-6" />
+          <p class="mt-3 text-sm">Sistema efectivo de gestión de proyectos.</p>
+        </div>
+        <div class="rounded-2xl border border-white/30 bg-white/10 p-4">
+          <Image src={iconDevelopment} alt="Desarrollo" class="h-6 w-6" />
+          <p class="mt-3 text-sm">
+            Desarrollo de proyectos en zonas de interés.
+          </p>
+        </div>
+        <div class="rounded-2xl border border-white/30 bg-white/10 p-4">
+          <Image src={iconOperations} alt="Operación" class="h-6 w-6" />
+          <p class="mt-3 text-sm">
+            Operación creativa mediante desarrollo de sistemas Machine Learning.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
