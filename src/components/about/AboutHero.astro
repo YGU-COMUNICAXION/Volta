@@ -1,0 +1,37 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  title: string;
+  description: string;
+  image: ImageMetadata;
+  imageAlt: string;
+}
+
+const { title, description, image, imageAlt } = Astro.props;
+---
+
+<section class="relative overflow-hidden">
+  <div class="grid min-h-[60vh] lg:grid-cols-[1.1fr_1.4fr]">
+    <div class="relative bg-primary text-white lg:[clip-path:polygon(0_0,100%_0,90%_100%,0_100%)]">
+      <div class="container mx-auto flex h-full flex-col justify-center gap-6 px-6 py-12 lg:px-12">
+        <h1 class="text-2xl font-semibold leading-tight sm:text-3xl lg:text-4xl">
+          {title}
+        </h1>
+        <p class="text-base leading-relaxed text-white/90 lg:text-lg">
+          {description}
+        </p>
+      </div>
+    </div>
+    <div class="relative min-h-[320px]">
+      <Image src={image} alt={imageAlt} class="h-full w-full object-cover" />
+      <div class="absolute inset-0 bg-black/10"></div>
+    </div>
+  </div>
+  <div
+    class="pointer-events-none absolute inset-y-0 left-[48%] hidden w-28 -skew-x-12 bg-primary lg:block"
+  ></div>
+  <div
+    class="pointer-events-none absolute inset-y-0 left-[52%] hidden w-10 -skew-x-12 bg-primary/90 lg:block"
+  ></div>
+</section>

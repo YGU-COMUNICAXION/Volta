@@ -1,0 +1,38 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  events: string[];
+  image: ImageMetadata;
+}
+
+const { events, image } = Astro.props;
+---
+
+<section class="bg-white pb-16">
+  <div class="container mx-auto grid gap-10 px-6 lg:grid-cols-[1fr_1.2fr]">
+    <div>
+      <h2 class="text-2xl font-semibold lg:text-3xl">
+        Nuestra presencia en eventos nacionales e internacionales
+      </h2>
+      <ol class="mt-6 list-decimal space-y-3 pl-5 text-sm text-black/70">
+        {events.map((event) => (
+          <li>{event}</li>
+        ))}
+      </ol>
+    </div>
+    <div class="relative overflow-hidden rounded-2xl">
+      <Image src={image} alt="Equipo VOLTA en evento" class="h-full w-full object-cover" />
+      <div class="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2">
+        {Array.from({ length: 5 }).map((_, index) => (
+          <span
+            class:list={[
+              "h-2 w-2 rounded-full",
+              index === 2 ? "bg-white" : "bg-white/50",
+            ]}
+          ></span>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
