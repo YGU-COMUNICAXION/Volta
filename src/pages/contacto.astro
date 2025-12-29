@@ -1,0 +1,64 @@
+---
+import Layout from "../layout/Layout.astro";
+import { Image } from "astro:assets";
+import bgBanner from "@assets/img/contacto/bgBanner.jpg";
+---
+
+<Layout title="Contacto | Volta Capital">
+  <section
+    class="relative flex min-h-[75vh] items-center justify-center text-white"
+  >
+    <div class="absolute inset-0">
+      <Image
+        src={bgBanner}
+        alt="Paneles solares"
+        class="h-full w-full object-cover"
+        loading="eager"
+      />
+      <div class="absolute inset-0 bg-black/40"></div>
+    </div>
+    <div class="relative z-10 container mx-auto px-4 text-center">
+      <h1
+        class="text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl xl:text-6xl"
+      >
+        El futuro energético de tus <br class="hidden sm:block" /> proyectos está
+        en tus manos
+      </h1>
+      <p
+        class="mx-auto mt-4 max-w-3xl text-sm text-white/85 sm:text-base lg:text-lg"
+      >
+        Contáctanos para conocer más detalles sobre nuestras soluciones
+        energéticas.
+      </p>
+      <div
+        class="mx-auto mt-8 flex max-w-3xl flex-wrap items-center justify-center
+        gap-x-8 gap-y-3 text-sm text-white/85 sm:text-base lg:text-lg"
+      >
+        <a href="mailto:info@volta.capital" class="hover:underline">
+          info@volta.capital
+        </a>
+        <a href="mailto:contacto@regulus.com.mx" class="hover:underline">
+          contacto@regulus.com.mx
+        </a>
+        <a href="mailto:contacto@sujio.mx" class="hover:underline">
+          contacto@sujio.mx
+        </a>
+      </div>
+      <div class="mt-4 flex flex-wrap items-center justify-center gap-3">
+        <a
+          href="tel:+524726882084"
+          class="text-sm text-white/85 hover:underline sm:text-base"
+        >
+          472 688 2084
+        </a>
+        <span class="text-sm text-white/85 sm:text-base">|</span>
+        <a
+          href="tel:+524726882026"
+          class="text-sm text-white/85 hover:underline sm:text-base"
+        >
+          472 688 2026
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
