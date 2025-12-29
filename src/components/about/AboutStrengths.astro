@@ -1,0 +1,42 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  items: string[];
+  icon: ImageMetadata;
+  backgroundImage: ImageMetadata;
+}
+
+const { items, icon, backgroundImage } = Astro.props;
+---
+
+<section class="relative">
+  <Image
+    src={backgroundImage}
+    alt="Planta solar con vista aérea"
+    class="absolute inset-0 h-full w-full object-cover"
+  />
+  <div class="absolute inset-0 bg-black/60"></div>
+  <div class="relative container mx-auto px-6 py-16 text-white lg:py-20">
+    <div
+      class="flex flex-wrap items-center justify-center gap-10 sm:grid-cols-2 lg:grid-cols-3"
+    >
+      {
+        items.map((item) => (
+          <div class="flex flex-col items-center gap-4 text-center max-w-xs lg:max-w-md">
+            <div class="flex size-16 items-center justify-center rounded-full bg-primary sm:size-20 lg:size-24">
+              <Image
+                src={icon}
+                alt="Indicador"
+                class="size-7 sm:size-9 lg:size-12"
+              />
+            </div>
+            <p class="text-lg leading-relaxed text-white/90 sm:text-base lg:text-2xl max-w-sm">
+              {item}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

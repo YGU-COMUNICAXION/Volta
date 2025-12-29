@@ -1,0 +1,104 @@
+---
+import Layout from "../layout/Layout.astro";
+import AboutHero from "@components/about/AboutHero.astro";
+import AboutStrengths from "@components/about/AboutStrengths.astro";
+import AboutStrategy from "@components/about/AboutStrategy.astro";
+import AboutCompanies from "@components/about/AboutCompanies.astro";
+import AboutClients from "@components/about/AboutClients.astro";
+import AboutEvents from "@components/about/AboutEvents.astro";
+import AboutContactCta from "@components/about/AboutContactCta.astro";
+
+import heroImage from "@assets/img/about-us/bgBanner.jpg";
+import parallaxImage from "@assets/img/about-us/parallax.jpg";
+import presenceImage from "@assets/img/about-us/presencia.jpg";
+import placeholderImage from "@assets/img/about-us/placeholder.jpg";
+import logoRegulus from "@assets/img/about-us/logoRegulus.png";
+import logoSujio from "@assets/img/about-us/logoSujio.png";
+import logoHHGM from "@assets/img/about-us/logoHHGM.png";
+import trendIcon from "@assets/svg/about-us/trend-up.svg";
+
+const strengths = [
+  "Equipo con +80 años de experiencia.",
+  "Presencia internacional y una sólida operación en México.",
+  "Promovemos prácticas que favorezcan la eficiencia energética.",
+  "Evaluamos el uso de energías limpias para brindar soluciones eficientes, confiables y sostenibles.",
+  "Facilitamos el desarrollo de proyectos de gran escala que impulsen el crecimiento nacional y regional.",
+];
+
+const companies = [
+  {
+    name: "Regulus Energia",
+    logo: logoRegulus,
+    description: "Comercializadora de energía limpia y potencia.",
+    highlight: "¿Por qué Regulus?",
+    bullets: [
+      "Soluciones integrales para las necesidades del cliente.",
+      "Transforma datos en análisis concretos.",
+      "Asegurando rentabilidad.",
+      "Brinda información estratégica que apoya la toma de decisiones.",
+    ],
+  },
+  {
+    name: "Sujio",
+    logo: logoSujio,
+    description:
+      "Ofrece servicios de suministro eléctrico a los grandes consumidores.",
+    highlight: "¿Por qué Sujio?",
+    bullets: [
+      "Costos de energía más bajos para sus necesidades del cliente.",
+      "Suministro eléctrico con garantía de generación limpia acreditada.",
+      "Acompañamiento de la normatividad vigente en instalaciones eléctricas.",
+    ],
+  },
+  {
+    name: "HHGM",
+    logo: logoHHGM,
+    description:
+      "Construcción de infraestructura eléctrica y suministro de materiales.",
+    highlight: "¿Por qué HHGM?",
+    bullets: [
+      "Monitoreo en servicios para mercados eléctricos mayorista y centros de infraestructura eléctrica de punta.",
+      "Venta de servicios de ahorro de energía por medio de soluciones de generación de energía eficiente, confiable y sostenible.",
+      "Alianzas estratégicas con fabricantes de equipos eléctricos de México.",
+    ],
+  },
+];
+
+const clientSegments = [
+  "Empresas que prestan servicios",
+  "Parques industriales y polos de desarrollo",
+  "Proveedores de espacios logísticos de almacenamiento, incluidos centros de datos.",
+  "Sector Automotriz (proveedores Tier 1 y Tier 2)",
+  "Industria alimentaria y agropecuaria",
+  "Manufacturas y empresas de transformación",
+];
+
+const events = [
+  "México Infrastructure Project Forum, Monterrey, México",
+  "10° Encuentro Latinoamericano de Energía, Cali, Colombia",
+  "14° Congreso Conjunto de Asociaciones de Energía, CDMX",
+  "Foro del Senado de la República",
+  "C. R. Valenzuela",
+];
+---
+
+<Layout title="Quiénes somos | Volta">
+  <AboutHero
+    title="VOLTA: Impulsando la industria energética con soluciones responsables"
+    description="Somos una empresa dedicada al desarrollo de infraestructura eléctrica de alto impacto; con ello, buscamos potenciar los recursos de las empresas en el sector energético y desarrollar proyectos con energías renovables."
+    image={heroImage}
+    imageAlt="Paneles solares en infraestructura energética"
+  />
+  <AboutStrengths
+    items={strengths}
+    icon={trendIcon}
+    backgroundImage={parallaxImage}
+  />
+  <AboutStrategy
+    text="Nuestras estrategias promueven la <b>reducción de emisiones</b>, alineando nuestras acciones <br/><br/> con los objetivos globales de <b>descarbonización</b>. De esta manera, contribuimos al desarrollo de infraestructura que respalda una <b>transición energética, realista y responsable.</b>"
+  />
+  <AboutCompanies companies={companies} placeholderImage={placeholderImage} />
+  <AboutClients segments={clientSegments} />
+  <AboutEvents events={events} image={presenceImage} />
+  <AboutContactCta />
+</Layout>

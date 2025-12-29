@@ -1,0 +1,40 @@
+---
+interface Column {
+  heading: string;
+  items: string[];
+}
+
+interface Props {
+  title: string;
+  columns: Column[];
+}
+
+const { title, columns } = Astro.props;
+---
+
+<section class="bg-white py-20">
+  <div class="container mx-auto px-4">
+    <h1
+      class="mx-auto max-w-5xl text-center text-3xl font-bold text-primary lg:text-6xl"
+    >
+      {title}
+    </h1>
+    <div class="mt-16 grid gap-12 lg:grid-cols-2">
+      {columns.map((column) => (
+        <div class="space-y-6">
+          <h2 class="text-lg font-medium text-black lg:text-xl">
+            {column.heading}
+          </h2>
+          <ul class="space-y-4 text-base text-black/70">
+            {column.items.map((item) => (
+              <li class="flex gap-3">
+                <span class="text-primary">✓</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
