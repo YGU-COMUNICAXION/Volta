@@ -4,7 +4,9 @@ import logoSujio from "@assets/svg/home/LogoSugio.svg";
 import logoSujioGeneration from "@assets/svg/home/LogoSujioGeneration.svg";
 import logoIndustria from "@assets/svg/home/LogoIndustriaElectrica.svg";
 import logoRegulus from "@assets/svg/home/LogoRegulus.png";
+
 import logoSujioAlt from "@assets/img/about-us/logoSujio.png";
+import logoSujioGAlt from "@assets/img/about-us/logoSujioGeneration.png";
 import logoRegulusAlt from "@assets/img/about-us/logoRegulus.png";
 import logoIndustriaAlt from "@assets/img/about-us/logoHHGM.png";
 
@@ -59,7 +61,7 @@ const companies: Company[] = [
       "Atención Especializada al Cliente",
     ],
     logo: logoSujioGeneration as LogoAsset,
-    modalLogo: logoSujioGeneration as LogoAsset,
+    modalLogo: logoSujioGAlt as LogoAsset,
     websiteUrl: "https://www.sujio.mx/",
   },
   {
@@ -95,9 +97,9 @@ const companies: Company[] = [
 ];
 
 export default function CompaniesSection() {
-  const [activeCompany, setActiveCompany] = useState<(typeof companies)[number] | null>(
-    null,
-  );
+  const [activeCompany, setActiveCompany] = useState<
+    (typeof companies)[number] | null
+  >(null);
 
   return (
     <section className="bg-white py-16 text-black">
@@ -140,10 +142,10 @@ export default function CompaniesSection() {
             <button
               type="button"
               onClick={() => setActiveCompany(null)}
-              className="absolute right-6 top-6 text-xl text-black/70"
+              className="absolute right-6 top-6 text-xl lg:text-2xl text-black/70 hover:cursor-pointer hover:text-black"
               aria-label="Cerrar"
             >
-              ×
+              x
             </button>
             <div className="flex justify-center">
               <div className="flex h-28 w-28 items-center justify-center rounded-full bg-black">
