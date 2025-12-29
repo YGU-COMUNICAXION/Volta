@@ -115,7 +115,7 @@ export default function CompaniesSection() {
               onClick={() => setActiveCompany(company)}
               className="group relative flex flex-col items-center pt-12 transition hover:-translate-y-1"
             >
-              <div className="absolute -top-6 flex items-center justify-center">
+              <div className="absolute -top-6 flex items-center justify-center rounded-full bg-white px-4 py-2">
                 <img
                   src={resolveLogo(company.logo)}
                   alt={`Logo ${company.name}`}
@@ -123,11 +123,19 @@ export default function CompaniesSection() {
                 />
               </div>
               <div
-                className="flex h-full w-full flex-col items-center gap-4 border border-black/50 bg-white px-6 pb-10 pt-12 text-center"
+                className="relative flex h-full w-full flex-col items-center gap-4 border border-black/60 bg-white px-6 pb-10 pt-14 text-center"
                 style={{
-                  clipPath: "polygon(8% 0%, 92% 0%, 100% 100%, 0% 100%)",
+                  clipPath: "polygon(6% 0%, 94% 0%, 100% 100%, 0% 100%)",
                 }}
               >
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute left-6 top-0 h-px w-16 bg-black/60"
+                />
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute right-6 top-0 h-px w-16 bg-black/60"
+                />
                 <div className="h-px w-12 bg-primary" />
                 <p className="text-sm text-black/70">{company.description}</p>
               </div>
