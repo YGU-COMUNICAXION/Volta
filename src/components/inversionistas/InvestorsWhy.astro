@@ -14,13 +14,13 @@ const { title, columns } = Astro.props;
 
 <section class="bg-white py-20">
   <div class="container mx-auto px-4">
-    <h2 class="text-center text-2xl font-semibold text-black lg:text-4xl">
+    <h2 class="text-center text-2xl font-medium text-black lg:text-4xl">
       {title}
     </h2>
     <div class="mt-16 grid gap-12 lg:grid-cols-2">
       {columns.map((column) => (
         <div class="space-y-6">
-          <h3 class="text-lg font-semibold text-black lg:text-xl">
+          <h3 class="text-lg font-medium text-black lg:text-xl">
             {column.heading}
           </h3>
           <ul class="space-y-3 text-base text-black/70">
