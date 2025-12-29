@@ -42,7 +42,7 @@ const companies: Company[] = [
     ],
     logo: logoSujio as LogoAsset,
     modalLogo: logoSujioAlt as LogoAsset,
-    websiteUrl: "#",
+    websiteUrl: "https://www.sujio.mx/",
   },
   {
     id: "sujio-generacion",
@@ -60,7 +60,7 @@ const companies: Company[] = [
     ],
     logo: logoSujioGeneration as LogoAsset,
     modalLogo: logoSujioGeneration as LogoAsset,
-    websiteUrl: "#",
+    websiteUrl: "https://www.sujio.mx/",
   },
   {
     id: "industria",
@@ -73,7 +73,7 @@ const companies: Company[] = [
     ],
     logo: logoIndustria as LogoAsset,
     modalLogo: logoIndustriaAlt as LogoAsset,
-    websiteUrl: "#",
+    websiteUrl: "https://www.hhgm.mx/",
   },
   {
     id: "regulus",
@@ -90,7 +90,7 @@ const companies: Company[] = [
     ],
     logo: logoRegulus as LogoAsset,
     modalLogo: logoRegulusAlt as LogoAsset,
-    websiteUrl: "#",
+    websiteUrl: "https://regulus.com.mx/",
   },
 ];
 
@@ -173,6 +173,8 @@ export default function CompaniesSection() {
             <div className="mt-6 text-center">
               <a
                 href={activeCompany.websiteUrl}
+                target="_blank"
+                rel="noreferrer"
                 className="text-sm font-medium underline"
               >
                 Ir a su sitio web
