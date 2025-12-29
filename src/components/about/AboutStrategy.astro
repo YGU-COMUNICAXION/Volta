@@ -8,8 +8,9 @@ const { text } = Astro.props;
 
 <section class="bg-white py-12">
   <div class="container mx-auto px-6 text-center">
-    <p class="mx-auto max-w-4xl text-sm leading-relaxed text-black/70 sm:text-base">
-      {text}
-    </p>
+    <p
+      class="mx-auto max-w-4xl text-sm leading-relaxed text-black/70 sm:text-base lg:text-lg"
+      set:html={text}
+    />
   </div>
 </section>

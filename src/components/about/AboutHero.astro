@@ -11,27 +11,58 @@ interface Props {
 const { title, description, image, imageAlt } = Astro.props;
 ---
 
-<section class="relative overflow-hidden">
-  <div class="grid min-h-[60vh] lg:grid-cols-[1.1fr_1.4fr]">
-    <div class="relative bg-primary text-white lg:[clip-path:polygon(0_0,100%_0,90%_100%,0_100%)]">
-      <div class="container mx-auto flex h-full flex-col justify-center gap-6 px-6 py-12 lg:px-12">
-        <h1 class="text-2xl font-semibold leading-tight sm:text-3xl lg:text-4xl">
-          {title}
-        </h1>
-        <p class="text-base leading-relaxed text-white/90 lg:text-lg">
-          {description}
-        </p>
+<section class="relative overflow-hidden bg-white">
+  <!-- Imagen de fondo que ocupa todo el ancho -->
+  <div class="absolute inset-0 z-0">
+    <Image
+      src={image}
+      alt={imageAlt}
+      class="h-full w-full object-cover object-bottom-right"
+    />
+    <div class="absolute inset-0 bg-black/20"></div>
+  </div>
+
+  <!-- Panel naranja con contenido -->
+  <div class="relative z-10 flex items-center">
+    <div class="max-w-4xl">
+      <div class="orange-panel-wrapper">
+        <div class="px-6 py-16 sm:px-12 lg:px-16 lg:py-24 xl:py-32">
+          <h1
+            class="mb-8 text-3xl font-bold leading-tight text-white md:text-4xl lg:text-4xl"
+          >
+            {title}
+          </h1>
+          <p
+            class="mt-4 text-base leading-relaxed text-white sm:text-lg lg:text-2xl"
+          >
+            {description}
+          </p>
+        </div>
       </div>
     </div>
-    <div class="relative min-h-[320px]">
-      <Image src={image} alt={imageAlt} class="h-full w-full object-cover" />
-      <div class="absolute inset-0 bg-black/10"></div>
-    </div>
   </div>
-  <div
-    class="pointer-events-none absolute inset-y-0 left-[48%] hidden w-28 -skew-x-12 bg-primary lg:block"
-  ></div>
-  <div
-    class="pointer-events-none absolute inset-y-0 left-[52%] hidden w-10 -skew-x-12 bg-primary/90 lg:block"
-  ></div>
 </section>
+
+<style>
+  .orange-panel-wrapper {
+    position: relative;
+    background-color: #d69632;
+  }
+
+  /* En desktop, agregar la forma diagonal */
+  @media (min-width: 1024px) {
+    .orange-panel-wrapper {
+      clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
+      /* Extender el panel hacia la derecha */
+      margin-right: -10%;
+      padding-right: 10%;
+    }
+  }
+
+  /* En móvil, panel rectangular completo */
+  @media (max-width: 1023px) {
+    .orange-panel-wrapper {
+      width: 100%;
+    }
+  }
+</style>
