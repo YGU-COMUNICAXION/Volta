@@ -6,23 +6,32 @@ interface Props {
 const { segments } = Astro.props;
 ---
 
-<section class="bg-white py-16">
+<section class="bg-white py-16 lg:py-24">
   <div class="container mx-auto px-6">
-    <h2 class="text-center text-2xl font-semibold lg:text-3xl">
+    <h2 class="text-center text-2xl font-medium lg:text-4xl">
       Quiénes son nuestros clientes
     </h2>
     <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-      {segments.map((segment, index) => (
-        <div
-          class:list={[
-            "rounded-lg px-6 py-5 text-center text-sm font-medium text-white",
-            "skew-x-[-8deg]",
-            index % 2 === 0 ? "bg-primary" : "bg-red-700",
-          ]}
-        >
-          <span class="block skew-x-[8deg] leading-relaxed">{segment}</span>
-        </div>
-      ))}
+      {
+        segments.map((segment, index) => (
+          <div
+            class:list={[
+              "contenedor flex items-center justify-center rounded-lg px-8 py-5 text-center font-normal text-white min-h-32 lg:min-h-64",
+              index % 2 === 0 ? "bg-primary" : "bg-red-700",
+            ]}
+          >
+            <span class="block leading-relaxed  text-sm lg:text-2xl">
+              {segment}
+            </span>
+          </div>
+        ))
+      }
     </div>
   </div>
 </section>
+
+<style>
+  .contenedor {
+    clip-path: polygon(0 0, 90% 0, 100% 100%, 10% 100%);
+  }
+</style>
