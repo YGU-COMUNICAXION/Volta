@@ -1,0 +1,64 @@
+---
+import Layout from "../layout/Layout.astro";
+import InvestorsIntro from "@components/inversionistas/InvestorsIntro.astro";
+import InvestorsWhy from "@components/inversionistas/InvestorsWhy.astro";
+import ContactCta from "@components/home/ContactCta.astro";
+
+const firstSection = {
+  title: "Sé parte del futuro energético de México",
+  columns: [
+    {
+      heading: "Clientes B2B",
+      items: [
+        "Empresas medianas y grandes que demandan un consumo eléctrico alto y buscan contratos a largo plazo con costos predecibles.",
+        "Industrias manufactureras: automotriz, acero, alimentos, químicos.",
+        "Centros comerciales, cadenas de retail, hospitales, universidades.",
+        "Empresas de tecnología y centros de datos.",
+      ],
+    },
+    {
+      heading: "Socios Inversionistas",
+      items: [
+        "Fondos de inversión, family offices y private equity con interés en infraestructura energética y renovables.",
+        "Bancos y fintechs especializados en financiamiento de proyectos.",
+        "Inversionistas extranjeros que buscan entrar al mercado eléctrico mexicano con vehículos estructurados y bajo riesgo.",
+      ],
+    },
+  ],
+};
+
+const secondSection = {
+  title: "¿Por qué asociarte con VOLTA?",
+  columns: [
+    {
+      heading: "Clientes B2B",
+      items: [
+        "Consumo energético >500 kW.",
+        "Certificados de energía limpia (CELs).",
+        "Reducción de costos operativos y protección contra volatilidad del mercado eléctrico.",
+        "Mejorar su huella de carbono y sus reportes ESG.",
+      ],
+    },
+    {
+      heading: "Socios Inversionistas",
+      items: [
+        "Buscan retornos superiores al promedio del mercado, ajustados por riesgo.",
+        "Horizonte de inversión a mediano-largo plazo.",
+        "Interés en proyectos con contratos PPA o modelos de venta asegurada.",
+      ],
+    },
+  ],
+};
+
+const cta = {
+  title:
+    "Escríbenos y comienza a aplicar soluciones que generen resultados confiables.",
+  button: "Contáctanos",
+};
+---
+
+<Layout title="Inversionistas | Volta" description="Página de inversionistas">
+  <InvestorsIntro {...firstSection} />
+  <InvestorsWhy {...secondSection} />
+  <ContactCta {...cta} />
+</Layout>
