@@ -6,7 +6,6 @@ import AboutStrategy from "@components/about/AboutStrategy.astro";
 import AboutCompanies from "@components/about/AboutCompanies.astro";
 import AboutClients from "@components/about/AboutClients.astro";
 import AboutEvents from "@components/about/AboutEvents.astro";
-import AboutContactCta from "@components/about/AboutContactCta.astro";
 
 import heroImage from "@assets/img/about-us/bgBanner.jpg";
 import parallaxImage from "@assets/img/about-us/parallax.jpg";
@@ -16,6 +15,7 @@ import logoRegulus from "@assets/img/about-us/logoRegulus.png";
 import logoSujio from "@assets/img/about-us/logoSujio.png";
 import logoHHGM from "@assets/img/about-us/logoHHGM.png";
 import trendIcon from "@assets/svg/about-us/trend-up.svg";
+import ContactCta from "@components/home/ContactCta.astro";
 
 const strengths = [
   "Equipo con +80 años de experiencia.",
@@ -100,5 +100,8 @@ const events = [
   <AboutCompanies companies={companies} placeholderImage={placeholderImage} />
   <AboutClients segments={clientSegments} />
   <AboutEvents events={events} image={presenceImage} />
-  <AboutContactCta />
+  <ContactCta
+    title="Contáctanos para conocer cómo potenciar tus recursos energéticos"
+    button="Contáctanos"
+  />
 </Layout>

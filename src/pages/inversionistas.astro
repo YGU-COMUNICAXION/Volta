@@ -3,6 +3,7 @@ import Layout from "../layout/Layout.astro";
 import InvestorsIntro from "@components/inversionistas/InvestorsIntro.astro";
 import InvestorsWhy from "@components/inversionistas/InvestorsWhy.astro";
 import InvestorsCta from "@components/inversionistas/InvestorsCta.astro";
+import ContactCta from "@components/home/ContactCta.astro";
 
 const firstSection = {
   title: "Sé parte del futuro energético de México",
@@ -60,5 +61,5 @@ const cta = {
 <Layout title="Inversionistas | Volta" description="Página de inversionistas">
   <InvestorsIntro {...firstSection} />
   <InvestorsWhy {...secondSection} />
-  <InvestorsCta {...cta} />
+  <ContactCta {...cta} />
 </Layout>

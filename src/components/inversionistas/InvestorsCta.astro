@@ -5,7 +5,7 @@ interface Props {
   href?: string;
 }
 
-const { title, button, href = "/contact" } = Astro.props;
+const { title, button, href = "/contacto" } = Astro.props;
 ---
 
 <section class="bg-white py-20">
@@ -15,8 +15,9 @@ const { title, button, href = "/contact" } = Astro.props;
     </p>
     <a
       href={href}
-      class="mt-8 inline-flex items-center justify-center rounded-full
-      bg-primary px-12 lg:px-16 py-3 text-lg lg:text-2xl font-medium text-white"
+      class="mt-6 inline-flex items-center justify-center rounded-full bg-primary
+       px-8 py-3 lg:px-16 text-base lg:text-2xl font-medium text-white shadow-sm transition
+       hover:bg-primary/90"
     >
       {button}
     </a>
