@@ -1,0 +1,23 @@
+---
+interface Props {
+  title: string;
+  button: string;
+  href?: string;
+}
+
+const { title, button, href = "/contact" } = Astro.props;
+---
+
+<section class="bg-white py-20">
+  <div class="container mx-auto px-4 text-center">
+    <p class="mx-auto max-w-3xl text-2xl font-semibold text-black">
+      {title}
+    </p>
+    <a
+      href={href}
+      class="mt-8 inline-flex items-center justify-center rounded-full bg-primary px-10 py-3 text-lg font-medium text-white"
+    >
+      {button}
+    </a>
+  </div>
+</section>
