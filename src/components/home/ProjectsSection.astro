@@ -1,0 +1,39 @@
+---
+const projectItems = [
+  "Gestión de proyectos llave en mano",
+  "Desarrollo y venta de proyectos en etapa RTB y RTF",
+  "Desarrollo de proyectos a la medida (DSA)",
+  "Sistemas fotovoltaicos de generación en sitio",
+  "Sistemas de almacenamiento de energía",
+  "Instalación de generadores de respaldo",
+  "Proyectos de inversión en generación distribuida",
+  "Proyectos de generación de venta total",
+  "Soluciones y estrategias de descarbonización para sitios y cadenas de suministro",
+];
+---
+
+<section class="bg-white py-16 lg:py-24">
+  <div class="container mx-auto px-4 text-center">
+    <h2 class="text-3xl font-semibold text-primary lg:text-5xl">
+      Proyectos que impulsan la transformación energética
+    </h2>
+    <p class="mx-auto mt-4 max-w-3xl text-base text-black/70 lg:text-lg">
+      Conoce nuestras soluciones renovables a lo largo de la República
+      Mexicana, con presencia principal en el noreste, Bajío, sureste y
+      penínsulas.
+    </p>
+
+    <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        projectItems.map((item) => (
+          <div
+            class="flex min-h-[120px] items-center justify-center rounded-3xl bg-[#D7E6F5] px-6 py-6 text-sm font-medium text-slate-700 shadow-sm lg:text-base"
+          >
+            <p>{item}</p>
+          </div>
+        ))
+      }
+    </div>
+
+  </div>
+</section>
