@@ -136,7 +136,7 @@ export default function CompaniesSection() {
 
       {activeCompany ? (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4">
-          <div className="relative w-full max-w-lg rounded-[28px] bg-white px-8 pb-10 pt-16 text-black shadow-xl">
+          <div className="relative w-full max-w-lg rounded-[28px] bg-white px-8 pb-10 pt-10 text-black shadow-xl">
             <button
               type="button"
               onClick={() => setActiveCompany(null)}
@@ -145,14 +145,16 @@ export default function CompaniesSection() {
             >
               ×
             </button>
-            <div className="absolute left-1/2 top-0 flex h-24 w-24 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-black">
-              <img
-                src={resolveLogo(activeCompany.modalLogo)}
-                alt={`Logo ${activeCompany.name}`}
-                className="h-12 w-auto"
-              />
+            <div className="flex justify-center">
+              <div className="flex h-28 w-28 items-center justify-center rounded-full bg-black">
+                <img
+                  src={resolveLogo(activeCompany.modalLogo)}
+                  alt={`Logo ${activeCompany.name}`}
+                  className="h-14 w-auto"
+                />
+              </div>
             </div>
-            <h3 className="text-lg font-semibold uppercase tracking-wide">
+            <h3 className="mt-8 text-lg font-semibold uppercase tracking-wide">
               {activeCompany.modalTitle}
             </h3>
             <div className="mt-2 space-y-3 text-sm text-black/80">
