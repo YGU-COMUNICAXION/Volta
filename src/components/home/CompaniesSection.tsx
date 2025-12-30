@@ -113,31 +113,44 @@ export default function CompaniesSection() {
               key={company.id}
               type="button"
               onClick={() => setActiveCompany(company)}
-              className="group relative flex flex-col items-center pt-12 transition hover:-translate-y-1"
+              className="group relative w-full transition hover:-translate-y-1 hover:cursor-pointer"
             >
-              <div className="absolute -top-6 flex items-center justify-center rounded-full bg-white px-4 py-2">
+              {/* Logo circular (posicionado absolutamente, centrado y superpuesto) */}
+              <div className="absolute left-1/2 top-20 z-10 h-24 w-24 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white p-1 md:h-28 md:w-28 md:p-2 lg:h-32 lg:w-32">
                 <img
                   src={resolveLogo(company.logo)}
                   alt={`Logo ${company.name}`}
-                  className="h-12 w-auto"
+                  className="h-full w-full rounded-full object-cover"
                 />
               </div>
-              <div
-                className="relative flex h-full w-full flex-col items-center gap-4 border border-black/60 bg-white px-6 pb-10 pt-14 text-center"
-                style={{
-                  clipPath: "polygon(6% 0%, 94% 0%, 100% 100%, 0% 100%)",
-                }}
-              >
-                <span
+
+              {/* Contenedor con SVG paralelogramo responsivo */}
+              <div className="relative pt-10 md:pt-12 lg:pt-14">
+                <svg
+                  viewBox="0 0 320 300"
+                  className="block h-64 w-full md:h-72 lg:h-80"
                   aria-hidden="true"
-                  className="pointer-events-none absolute left-6 top-0 h-px w-16 bg-black/60"
-                />
-                <span
-                  aria-hidden="true"
-                  className="pointer-events-none absolute right-6 top-0 h-px w-16 bg-black/60"
-                />
-                <div className="h-px w-12 bg-primary" />
-                <p className="text-sm text-black/70">{company.description}</p>
+                  preserveAspectRatio="none"
+                >
+                  {/* Paralelogramo: top y bottom inclinados hacia la derecha */}
+                  <polygon
+                    points="25,35 285,35 305,275 45,275"
+                    fill="white"
+                    stroke="rgba(17,17,17,1)"
+                    strokeWidth="1"
+                    vectorEffect="non-scaling-stroke"
+                  />
+                </svg>
+
+                {/* Contenido centrado dentro del SVG */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center px-12 text-center md:px-12">
+                  <p
+                    className="mt-10 lg:mt-12
+                  text-base font-medium leading-snug text-black md:text-lg lg:text-xl"
+                  >
+                    {company.description}
+                  </p>
+                </div>
               </div>
             </button>
           ))}
