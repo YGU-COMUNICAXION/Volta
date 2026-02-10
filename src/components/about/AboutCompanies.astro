@@ -7,6 +7,7 @@ interface Company {
   description: string;
   highlight: string;
   bullets: string[];
+  cardImage?: ImageMetadata;
 }
 
 interface Props {
@@ -37,8 +38,8 @@ const { companies, placeholderImage } = Astro.props;
           <article class="overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm">
             <div class="relative">
               <Image
-                src={placeholderImage}
-                alt="Equipo de trabajo"
+                src={company.cardImage || placeholderImage}
+                alt={company.name}
                 class="h-44 w-full object-cover"
               />
               <div
