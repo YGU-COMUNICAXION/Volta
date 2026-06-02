@@ -15,97 +15,81 @@ type LogoAsset = string | { src: string };
 const resolveLogo = (logo: LogoAsset) =>
   typeof logo === "string" ? logo : logo.src;
 
-type Company = {
-  id: string;
-  name: string;
+type CompanyId = "sujio" | "sujio-generacion" | "industria" | "regulus";
+
+type CompanyCopy = {
+  id: CompanyId;
   description: string;
   modalTitle: string;
   modalDescription: string[];
   modalBullets?: string[];
+};
+
+type Company = CompanyCopy & {
+  name: string;
   modalLogo: LogoAsset;
   logo: LogoAsset;
   websiteUrl: string;
 };
 
-const companies: Company[] = [
-  {
-    id: "sujio",
+type Props = {
+  title: string;
+  closeLabel: string;
+  websiteLabel: string;
+  bulletSymbol: string;
+  logoPrefix: string;
+  items: CompanyCopy[];
+};
+
+const companyAssets: Record<
+  CompanyId,
+  Pick<Company, "name" | "logo" | "modalLogo" | "websiteUrl">
+> = {
+  sujio: {
     name: "Sujio",
-    description: "Energía a la medida de grandes consumidores",
-    modalTitle: "SUJÍO",
-    modalDescription: [
-      "Suministro eléctrico a grandes consumidores y representación de centrales de generación exenta (<0.5 MW).",
-    ],
-    modalBullets: [
-      "Precios competitivos",
-      "Atención al cliente personalizada",
-      "Flexibilidad contractual",
-      "Asesoría especializada y transparencia",
-    ],
     logo: logoSujio as LogoAsset,
     modalLogo: logoSujioAlt as LogoAsset,
     websiteUrl: "https://www.sujio.mx/",
   },
-  {
-    id: "sujio-generacion",
+  "sujio-generacion": {
     name: "Sujio Generación",
-    description: "Representación de generadores",
-    modalTitle: "SUJÍO GENERACIÓN",
-    modalDescription: [
-      "Representación y operación de centrales eléctricas en el MEM.",
-    ],
-    modalBullets: [
-      "Asesoría especializada en la migración a LESE de Centrales Eléctricas",
-      "Mejora en eficiencia Operativa",
-      "Oportunidad de contratos a largo plazo",
-      "Atención Especializada al Cliente",
-    ],
     logo: logoSujioGeneration as LogoAsset,
     modalLogo: logoSujioGAlt as LogoAsset,
     websiteUrl: "https://www.sujio.mx/",
   },
-  {
-    id: "industria",
+  industria: {
     name: "HHGM",
-    description: "Infraestructura eléctrica que conecta al país",
-    modalTitle: "HHGM",
-    modalDescription: [
-      "Especialistas en construcción de infraestructura eléctrica y suministro de materiales a nivel nacional.",
-      "Cumplimos con las regulaciones del MEM.",
-    ],
     logo: logoIndustria as LogoAsset,
     modalLogo: logoIndustriaAlt as LogoAsset,
     websiteUrl: "https://www.hhgm.mx/",
   },
-  {
-    id: "regulus",
+  regulus: {
     name: "Regulus",
-    description: "Comercialización con experiencia y visión",
-    modalTitle: "REGULUS ENERGÍA",
-    modalDescription: [
-      "Comercializador con tres generaciones de experiencia en el Mercado Eléctrico Mayorista (MEM).",
-    ],
-    modalBullets: [
-      "Comercialización de energía y potencia",
-      "Importación y exportación de energía",
-      "Certificados de Energía Limpia",
-    ],
     logo: logoRegulus as LogoAsset,
     modalLogo: logoRegulusAlt as LogoAsset,
     websiteUrl: "https://regulus.com.mx/",
   },
-];
+};
 
-export default function CompaniesSection() {
-  const [activeCompany, setActiveCompany] = useState<
-    (typeof companies)[number] | null
-  >(null);
+export default function CompaniesSection({
+  title,
+  closeLabel,
+  websiteLabel,
+  bulletSymbol,
+  logoPrefix,
+  items,
+}: Props) {
+  const companies: Company[] = items.map((item) => ({
+    ...item,
+    ...companyAssets[item.id],
+  }));
+  const [activeCompany, setActiveCompany] = useState<Company | null>(null);
 
   return (
     <section className="bg-white py-16 text-black">
       <div className="container mx-auto px-4">
         <h2 className="text-center text-2xl font-semibold lg:text-4xl">
-          Nuestras empresas, una sola visión
+          {title}
         </h2>
         <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {companies.map((company) => (
@@ -115,11 +99,10 @@ export default function CompaniesSection() {
               onClick={() => setActiveCompany(company)}
               className="group relative w-full transition hover:-translate-y-1 hover:cursor-pointer"
             >
-              {/* Logo circular (posicionado absolutamente, centrado y superpuesto) */}
               <div className="absolute left-1/2 top-20 z-10 h-24 w-24 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white p-1 md:h-28 md:w-28 md:p-2 lg:h-32 lg:w-32">
                 <img
                   src={resolveLogo(company.logo)}
-                  alt={`Logo ${company.name}`}
+                  alt={`${logoPrefix} ${company.name}`}
                   className="h-full w-full rounded-full object-cover"
                 />
               </div>
@@ -148,7 +131,7 @@ export default function CompaniesSection() {
               type="button"
               onClick={() => setActiveCompany(null)}
               className="absolute right-6 top-6 text-xl lg:text-2xl text-black/70 hover:cursor-pointer hover:text-black"
-              aria-label="Cerrar"
+              aria-label={closeLabel}
             >
               x
             </button>
@@ -156,7 +139,7 @@ export default function CompaniesSection() {
               <div className="flex h-28 w-28 items-center justify-center rounded-full bg-black">
                 <img
                   src={resolveLogo(activeCompany.modalLogo)}
-                  alt={`Logo ${activeCompany.name}`}
+                  alt={`${logoPrefix} ${activeCompany.name}`}
                   className="h-14 w-auto"
                 />
               </div>
@@ -173,7 +156,7 @@ export default function CompaniesSection() {
               <ul className="mt-4 space-y-2 text-sm text-black/80">
                 {activeCompany.modalBullets.map((bullet) => (
                   <li key={bullet} className="flex gap-2">
-                    <span aria-hidden="true">•</span>
+                    <span aria-hidden="true">{bulletSymbol}</span>
                     <span>{bullet}</span>
                   </li>
                 ))}
@@ -186,7 +169,7 @@ export default function CompaniesSection() {
                 rel="noreferrer"
                 className="text-sm font-medium underline"
               >
-                Ir a su sitio web
+                {websiteLabel}
               </a>
             </div>
           </div>

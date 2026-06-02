@@ -1,15 +1,19 @@
 ---
 import { Image } from "astro:assets";
 import heroImage from "@assets/img/home/bgBannerHome.jpg";
+
+interface Props {
+  title: string;
+  subtitle: string;
+  imageAlt: string;
+}
+
+const { title, subtitle, imageAlt } = Astro.props;
 ---
 
 <section class="relative text-white">
   <div class="absolute inset-0">
-    <Image
-      src={heroImage}
-      alt="Paneles solares en campo"
-      class="h-full w-full object-cover"
-    />
+    <Image src={heroImage} alt={imageAlt} class="h-full w-full object-cover" />
     <div class="absolute inset-0 bg-black/50"></div>
   </div>
   <div
@@ -18,10 +22,8 @@ import heroImage from "@assets/img/home/bgBannerHome.jpg";
     <h1
       class="text-3xl font-bold leading-none text-primary lg:text-5xl xl:text-6xl max-w-4xl"
     >
-      Soluciones energéticas integrales y de alto impacto
+      {title}
     </h1>
-    <p class="mt-4 text-lg lg:text-2xl">
-      Impulsando el futuro energético de México
-    </p>
+    <p class="mt-4 text-lg lg:text-2xl">{subtitle}</p>
   </div>
 </section>

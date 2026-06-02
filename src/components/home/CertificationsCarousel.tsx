@@ -1,6 +1,20 @@
 import { useMemo, useState, useEffect } from "react";
 
-export default function CertificationsCarousel() {
+type Props = {
+  title: string;
+  prevLabel: string;
+  nextLabel: string;
+  indicatorLabel: string;
+  logoAlt: string;
+};
+
+export default function CertificationsCarousel({
+  title,
+  prevLabel,
+  nextLabel,
+  indicatorLabel,
+  logoAlt,
+}: Props) {
   const logos = useMemo(() => {
     const entries = Object.entries(
       import.meta.glob<string>("@assets/img/home/carousel/*", {
@@ -17,18 +31,16 @@ export default function CertificationsCarousel() {
 
   const [index, setIndex] = useState(0);
 
-  // Determinar cuántas imágenes mostrar según el tamaño de pantalla
   const getVisibleCount = () => {
     if (typeof window === "undefined") return 4;
 
-    if (window.innerWidth < 768) return 1; // mobile
-    if (window.innerWidth < 1024) return 2; // md
-    return 4; // desktop
+    if (window.innerWidth < 768) return 1;
+    if (window.innerWidth < 1024) return 2;
+    return 4;
   };
 
   const [visibleCount, setVisibleCount] = useState(getVisibleCount);
 
-  // Actualizar visibleCount en resize
   useEffect(() => {
     const handleResize = () => setVisibleCount(getVisibleCount());
     window.addEventListener("resize", handleResize);
@@ -37,7 +49,6 @@ export default function CertificationsCarousel() {
 
   const maxIndex = Math.max(logos.length - visibleCount, 0);
 
-  // Ajustar índice si está fuera de rango al cambiar visibleCount
   useEffect(() => {
     if (index > maxIndex) {
       setIndex(maxIndex);
@@ -55,18 +66,17 @@ export default function CertificationsCarousel() {
   const isAtStart = index === 0;
   const isAtEnd = index === maxIndex;
 
-  const itemWidth = 180; // Ancho fijo para todas las imágenes
-  const gap = 32; // gap-8
+  const itemWidth = 180;
+  const gap = 32;
 
   return (
     <section className="bg-white py-12 text-black">
       <div className="container mx-auto px-4">
         <h2 className="text-center text-xl font-semibold lg:text-2xl">
-          Certificaciones que nos respaldan
+          {title}
         </h2>
 
         <div className="mt-8 flex items-center justify-center gap-4">
-          {/* Botón Anterior */}
           <button
             type="button"
             onClick={handlePrev}
@@ -81,12 +91,11 @@ export default function CertificationsCarousel() {
                   : "border-gray-400 bg-white text-gray-700 hover:border-gray-600 hover:bg-gray-100 active:scale-95"
               }
             `}
-            aria-label="Anterior"
+            aria-label={prevLabel}
           >
             ‹
           </button>
 
-          {/* Contenedor del Carousel */}
           <div
             className="overflow-hidden"
             style={{
@@ -108,7 +117,7 @@ export default function CertificationsCarousel() {
                   <div className="flex h-24 items-center justify-center">
                     <img
                       src={logo}
-                      alt={`Certificación ${logoIndex + 1}`}
+                      alt={`${logoAlt} ${logoIndex + 1}`}
                       className="max-h-20 w-auto object-contain"
                       loading="lazy"
                     />
@@ -118,7 +127,6 @@ export default function CertificationsCarousel() {
             </div>
           </div>
 
-          {/* Botón Siguiente */}
           <button
             type="button"
             onClick={handleNext}
@@ -133,13 +141,12 @@ export default function CertificationsCarousel() {
                   : "border-gray-400 bg-white text-gray-700 hover:border-gray-600 hover:bg-gray-100 active:scale-95"
               }
             `}
-            aria-label="Siguiente"
+            aria-label={nextLabel}
           >
             ›
           </button>
         </div>
 
-        {/* Indicadores de posición */}
         {logos.length > visibleCount && (
           <div className="mt-6 flex justify-center gap-2">
             {Array.from({ length: maxIndex + 1 }).map((_, i) => (
@@ -151,7 +158,7 @@ export default function CertificationsCarousel() {
                     ? "w-8 bg-gray-700"
                     : "w-2 bg-gray-300 hover:bg-gray-500"
                 }`}
-                aria-label={`Ir a la posición ${i + 1}`}
+                aria-label={`${indicatorLabel} ${i + 1}`}
               />
             ))}
           </div>

@@ -1,8 +1,30 @@
 ---
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import {
+  Bars3Icon,
+  LanguageIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
 import { Image } from "astro:assets";
+import {
+  getAlternateLocaleUrl,
+  getPageKeyFromPathname,
+  getRoute,
+  routeKeys,
+  type Locale,
+} from "@i18n/routes";
+import { ui } from "@i18n/ui";
 
 import imgLogo from "@assets/logo.png";
+
+interface Props {
+  locale: Locale;
+  pathname: string;
+}
+
+const { locale, pathname } = Astro.props;
+const dictionary = ui[locale];
+const activePage = getPageKeyFromPathname(pathname);
+const alternateUrl = getAlternateLocaleUrl(pathname);
 ---
 
 <header
@@ -17,7 +39,7 @@ import imgLogo from "@assets/logo.png";
   <div
     class="container relative flex items-center justify-between gap-4 px-4 md:py-0 lg:p-0 md:px-0"
   >
-    <div class="lg:hidden absolute">
+    <div class="absolute lg:hidden">
       <Bars3Icon
         id="menu-icon"
         data-header-icon
@@ -30,16 +52,17 @@ import imgLogo from "@assets/logo.png";
       />
     </div>
 
-    <div
-      class="w-full lg:w-auto flex items-center justify-center lg:justify-start"
-    >
+    <div class="flex w-full items-center justify-center lg:w-auto lg:justify-start">
       <a
-        href={"/"}
-        data-i18n-path="/"
+        href={getRoute(locale, "home")}
         data-header-brand
-        class={`flex items-center transition-colors duration-300`}
+        class="flex items-center transition-colors duration-300"
       >
-        <Image class="h-16 lg:h-24 w-auto" src={imgLogo} alt={"logo"} />
+        <Image
+          class="h-16 w-auto lg:h-24"
+          src={imgLogo}
+          alt={dictionary.header.logoAlt}
+        />
       </a>
     </div>
 
@@ -63,30 +86,45 @@ import imgLogo from "@assets/logo.png";
         font-normal text-base lg:text-lg xl:text-xl transition-colors duration-300
       `}
       >
-        <li>
-          <a href={"/"}> Inicio </a>
-        </li>
-        <li>
-          <a href={"/quienes-somos"}> Quienes somos </a>
-        </li>
-        <li>
-          <a href={"/proyectos"}> Proyectos </a>
-        </li>
-        <li>
-          <a href={"/inversionistas"}> Inversionistas </a>
-        </li>
-        <li>
-          <a href={"/contacto"}> Contacto </a>
+        {
+          routeKeys.map((key) => (
+            <li>
+              <a
+                href={getRoute(locale, key)}
+                class:list={[key === activePage && "active"]}
+              >
+                {dictionary.header.nav[key]}
+              </a>
+            </li>
+          ))
+        }
+        <li class="lg:hidden">
+          <a
+            href={alternateUrl}
+            aria-label={dictionary.header.switchLabel}
+            class="inline-flex items-center gap-2 rounded-full border border-black/20 px-4 py-2"
+          >
+            <LanguageIcon className="size-5" />
+            <span>{dictionary.header.switchText}</span>
+          </a>
         </li>
       </ul>
     </nav>
+
+    <!-- <a
+      href={alternateUrl}
+      aria-label={dictionary.header.switchLabel}
+      class="absolute right-0 inline-flex items-center justify-center rounded-full p-2 text-black transition hover:text-primary lg:static"
+    >
+      <LanguageIcon className="size-6 lg:size-7" />
+      <span class="sr-only">{dictionary.header.switchText}</span>
+    </a> -->
   </div>
 </header>
 
 <style>
   @reference "../styles/global.css";
 
-  /* Colocar linea color roja del link activo por debajo del link, pero en desktop colocar la linea encima del link */
   #navigator-menu a:is(.active) {
     font-weight: 600;
   }
@@ -108,14 +146,9 @@ import imgLogo from "@assets/logo.png";
     }
 
     const setMenuOpen = (open: boolean | undefined) => {
-      // Toggle iconos
       barsIcon.classList.toggle("hidden", open);
       closeIcon.classList.toggle("hidden", !open);
-
-      // Mover el nav (tu clase para desplegar)
       navigatorMenu.classList.toggle("top-16", open);
-
-      // Marcar estado en header
       header.setAttribute("data-menu-open", open ? "true" : "false");
     };
 

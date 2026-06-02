@@ -1,6 +1,15 @@
 ---
 import { Image } from "astro:assets";
+import { getRoute, routeKeys, type Locale } from "@i18n/routes";
+import { ui } from "@i18n/ui";
 import logo from "@assets/logo_alt.png";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dictionary = ui[locale];
 ---
 
 <footer class="bg-primary text-white">
@@ -9,11 +18,10 @@ import logo from "@assets/logo_alt.png";
       <div>
         <Image src={logo} alt="Volta Capital" class="h-14 w-auto" />
         <p class="mt-4 text-base lg:text-lg text-white/80 lg:max-w-2xl">
-          Impulsando el futuro energético de México con soluciones integrales y
-          sostenibles.
+          {dictionary.footer.tagline}
         </p>
         <div class="mt-4 text-base lg:text-lg">
-          <p class="font-semibold">Nuestras Empresas</p>
+          <p class="font-semibold">{dictionary.footer.companiesTitle}</p>
           <div class="underline">
             <p class="mt-2">
               <a
@@ -49,31 +57,28 @@ import logo from "@assets/logo_alt.png";
         </div>
       </div>
       <div class="underline">
-        <p class="text-base lg:text-lg font-semibold">Navegación</p>
+        <p class="text-base lg:text-lg font-semibold">
+          {dictionary.footer.navigationTitle}
+        </p>
         <ul class="mt-3 space-y-2 text-base lg:text-lg text-white/80">
-          <li>
-            <a href="/" class="hover:text-white transition-colors">Inicio</a>
-          </li>
-          <li>
-            <a href="/quienes-somos" class="hover:text-white transition-colors"
-              >Quienes somos</a>
-          </li>
-          <li>
-            <a href="/proyectos" class="hover:text-white transition-colors"
-              >Proyectos</a>
-          </li>
-          <li>
-            <a href="/inversionistas" class="hover:text-white transition-colors"
-              >Inversionistas</a>
-          </li>
-          <li>
-            <a href="/contacto" class="hover:text-white transition-colors"
-              >Contacto</a>
-          </li>
+          {
+            routeKeys.map((key) => (
+              <li>
+                <a
+                  href={getRoute(locale, key)}
+                  class="hover:text-white transition-colors"
+                >
+                  {dictionary.header.nav[key]}
+                </a>
+              </li>
+            ))
+          }
         </ul>
       </div>
       <div class="underline">
-        <p class="text-base lg:text-lg font-semibold">Contacto</p>
+        <p class="text-base lg:text-lg font-semibold">
+          {dictionary.footer.contactTitle}
+        </p>
         <ul
           class="mt-3 space-y-2 text-base lg:text-lg text-white/80 [&_a:hover]:underline"
         >
@@ -88,7 +93,7 @@ import logo from "@assets/logo_alt.png";
     <div
       class="mt-10 border-t border-white/40 pt-6 text-center text-lg text-white/70"
     >
-      © VOLTA CAPITAL. Todos los derechos reservados.
+      {dictionary.footer.rights}
     </div>
   </div>
 </footer>

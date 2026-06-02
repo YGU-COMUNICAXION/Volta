@@ -2,19 +2,21 @@
 import { Image } from "astro:assets";
 
 interface Props {
+  title: string;
   events: string[];
   images: ImageMetadata[];
+  imageAlt: string;
+  prevLabel: string;
+  nextLabel: string;
 }
 
-const { events, images } = Astro.props;
+const { title, events, images, imageAlt, prevLabel, nextLabel } = Astro.props;
 ---
 
 <section class="bg-white pb-16">
   <div class="mx-auto grid gap-10 px-6 lg:grid-cols-[1fr_2fr] lg:pl-32 lg:pr-0">
     <div>
-      <h2 class="text-2xl font-medium lg:text-5xl">
-        Nuestra presencia en eventos nacionales e internacionales
-      </h2>
+      <h2 class="text-2xl font-medium lg:text-5xl">{title}</h2>
       <ol
         class="mt-6 list-decimal space-y-3 pl-5 text-base lg:text-lg text-black"
       >
@@ -37,7 +39,7 @@ const { events, images } = Astro.props;
             >
               <Image
                 src={image}
-                alt={`Equipo VOLTA en evento ${index + 1}`}
+                alt={`${imageAlt} ${index + 1}`}
                 class="h-full w-full object-cover"
               />
               <div class="absolute inset-0 bg-black/20" />
@@ -49,7 +51,7 @@ const { events, images } = Astro.props;
       <button
         type="button"
         class="absolute left-4 top-1/2 z-10 flex size-10 -translate-y-1/2 items-center justify-center text-white transition hover:text-primary sm:left-8 sm:size-12"
-        aria-label="Imagen anterior"
+        aria-label={prevLabel}
         data-carousel-prev
       >
         <span
@@ -59,7 +61,7 @@ const { events, images } = Astro.props;
       <button
         type="button"
         class="absolute right-4 top-1/2 z-10 flex size-10 -translate-y-1/2 items-center justify-center text-white transition hover:text-primary sm:right-8 sm:size-12"
-        aria-label="Imagen siguiente"
+        aria-label={nextLabel}
         data-carousel-next
       >
         <span

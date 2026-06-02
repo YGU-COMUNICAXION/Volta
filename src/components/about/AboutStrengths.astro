@@ -5,16 +5,17 @@ interface Props {
   items: string[];
   icon: ImageMetadata;
   backgroundImage: ImageMetadata;
+  backgroundAlt: string;
   textLines?: string[];
 }
 
-const { items, icon, backgroundImage, textLines = [] } = Astro.props;
+const { items, icon, backgroundImage, backgroundAlt, textLines = [] } = Astro.props;
 ---
 
 <section class="relative">
   <Image
     src={backgroundImage}
-    alt="Planta solar con vista aérea"
+    alt={backgroundAlt}
     class="absolute inset-0 h-full w-full object-cover"
   />
   <div class="absolute inset-0 bg-black/65"></div>
@@ -24,11 +25,7 @@ const { items, icon, backgroundImage, textLines = [] } = Astro.props;
         items.map((item) => (
           <div class="flex min-h-64 flex-col items-center rounded-2xl border border-white/10 bg-white/15 px-7 pb-8 pt-12 text-center shadow-[0_18px_45px_rgba(0,0,0,0.22)] backdrop-blur-md sm:pt-14 lg:min-h-72 lg:pt-16">
             <div class="flex size-16 items-center justify-center rounded-full bg-primary sm:size-20 lg:size-24">
-              <Image
-                src={icon}
-                alt="Indicador"
-                class="size-7 sm:size-9 lg:size-12"
-              />
+              <Image src={icon} alt="" class="size-7 sm:size-9 lg:size-12" />
             </div>
             <p
               class="mt-7 max-w-sm text-base leading-snug text-white sm:text-lg lg:mt-8 lg:text-xl"
