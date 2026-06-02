@@ -9,11 +9,15 @@ import AboutEvents from "@components/about/AboutEvents.astro";
 
 import heroImage from "@assets/img/about-us/bgBanner.jpg";
 import parallaxImage from "@assets/img/about-us/parallax.jpg";
-import presenceImage from "@assets/img/about-us/presencia.jpg";
+import presenceImage01 from "@assets/img/about-us/presencia/1.jpg";
+import presenceImage02 from "@assets/img/about-us/presencia/02.jpg";
+import presenceImage03 from "@assets/img/about-us/presencia/03.jpg";
+import presenceImage04 from "@assets/img/about-us/presencia/04.jpg";
 import placeholderImage from "@assets/img/about-us/placeholder.jpg";
 import logoRegulus from "@assets/img/about-us/logoRegulus.png";
 import logoSujio from "@assets/img/about-us/logoSujio.png";
 import logoHHGM from "@assets/img/about-us/logoHHGM.png";
+import logoSujioGeneration from "@assets/img/about-us/logoSujioGeneration.png";
 import regularusCardImage from "@assets/img/about-us/RegulusEnergiaCard.jpg";
 import sujioCardImage from "@assets/img/about-us/SujioCard.jpg";
 import hhgmCardImage from "@assets/img/about-us/HHGMCard.jpg";
@@ -57,6 +61,19 @@ const companies = [
     ],
   },
   {
+    name: "Sujio Generación",
+    logo: logoSujioGeneration,
+    cardImage: sujioGenerationCardImage,
+    description:
+      "Construcción de infraestructura eléctrica y suministro de materiales.",
+    highlight: "¿Por qué Sujio Generación?",
+    bullets: [
+      "Pioneros en servicios para el Mercado Eléctrico Mayorista y expertos en infraestructura eléctrica de punto a punto.",
+      "Venta de servicios de ahorro de energía por medio de sustentos de generación de energía, eficiencia energética y reducción de pérdidas.",
+      "Alianzas estratégicas con fabricantes de equipo eléctrico.",
+    ],
+  },
+  {
     name: "HHGM",
     logo: logoHHGM,
     cardImage: hhgmCardImage,
@@ -87,6 +104,13 @@ const events = [
   "Foro del Senado de la República",
   "C. R. Valenzuela",
 ];
+
+const presenceImages = [
+  presenceImage01,
+  presenceImage02,
+  presenceImage03,
+  presenceImage04,
+];
 ---
 
 <Layout title="Quiénes somos | Volta">
@@ -106,7 +130,7 @@ const events = [
   />
   <AboutCompanies companies={companies} placeholderImage={placeholderImage} />
   <AboutClients segments={clientSegments} />
-  <AboutEvents events={events} image={presenceImage} />
+  <AboutEvents events={events} images={presenceImages} />
   <ContactCta
     title="Contáctanos para conocer cómo potenciar tus recursos energéticos"
     button="Contáctanos"

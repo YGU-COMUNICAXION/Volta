@@ -27,43 +27,43 @@ const { companies, placeholderImage } = Astro.props;
       <p
         class="mt-2 text-sm text-black/70 font-normal sm:text-base lg:text-2xl"
       >
-        Regulus, Sujio y HHGM son marcas de VOLTA que brindan distintas
+        Regulus, Sujio, Sujio Generación y HHGM son marcas de VOLTA que brindan distintas
         soluciones en la industria energética.
       </p>
     </div>
 
-    <div class="mt-10 grid gap-8 lg:grid-cols-3">
+    <div class="mt-10 grid gap-8 md:grid-cols-2 xl:grid-cols-4">
       {
         companies.map((company) => (
-          <article class="overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm">
+          <article class="overflow-hidden rounded-2xl border border-black/10 bg-white shadow-[0_18px_45px_rgba(0,0,0,0.12)]">
             <div class="relative">
               <Image
                 src={company.cardImage || placeholderImage}
                 alt={company.name}
-                class="h-44 w-full object-cover"
+                class="h-44 w-full object-cover xl:h-40"
               />
               <div
-                class="absolute left-6 -bottom-6 flex size-14 lg:size-32 border-4 border-white
-               items-center justify-center rounded-full bg-primary shadow"
+                class="absolute left-6 -bottom-8 flex size-20 border-[6px] border-white
+               items-center justify-center rounded-full bg-white shadow-[0_8px_24px_rgba(0,0,0,0.14)] lg:size-24"
               >
                 <Image
                   src={company.logo}
                   alt={company.name}
-                  class="size-10 lg:size-24 object-contain"
+                  class="size-14 object-contain lg:size-16"
                 />
               </div>
             </div>
-            <div class="px-6 pb-6 pt-10">
-              <h3 class="text-lg lg:text-2xl font-medium uppercase tracking-wide">
+            <div class="px-6 pb-6 pt-14">
+              <h3 class="text-lg font-medium uppercase tracking-wide lg:text-xl">
                 {company.name}
               </h3>
-              <p class="mt-2 text-sm lg:text-base text-black/70">
+              <p class="mt-3 text-sm text-black/70 lg:text-base">
                 {company.description}
               </p>
-              <p class="mt-4 text-sm lg:text-base font-medium italic">
+              <p class="mt-4 text-sm font-medium italic lg:text-base">
                 {company.highlight}
               </p>
-              <ul class="mt-3 text-sm lg:text-base list-disc space-y-2 pl-4 text-black/70">
+              <ul class="mt-3 list-disc space-y-2 pl-4 text-sm text-black/70 lg:text-base">
                 {company.bullets.map((bullet) => (
                   <li>{bullet}</li>
                 ))}
