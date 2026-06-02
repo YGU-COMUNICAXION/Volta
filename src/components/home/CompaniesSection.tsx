@@ -124,25 +124,9 @@ export default function CompaniesSection() {
                 />
               </div>
 
-              {/* Contenedor con SVG paralelogramo responsivo */}
               <div className="relative pt-10 md:pt-12 lg:pt-14">
-                <svg
-                  viewBox="0 0 320 300"
-                  className="block h-64 w-full md:h-72 lg:h-80"
-                  aria-hidden="true"
-                  preserveAspectRatio="none"
-                >
-                  {/* Paralelogramo: top y bottom inclinados hacia la derecha */}
-                  <polygon
-                    points="25,35 285,35 305,275 45,275"
-                    fill="white"
-                    stroke="rgba(17,17,17,1)"
-                    strokeWidth="1"
-                    vectorEffect="non-scaling-stroke"
-                  />
-                </svg>
+                <div className="h-64 rounded-[32px] border border-black bg-white md:h-72 lg:h-80" />
 
-                {/* Contenido centrado dentro del SVG */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center px-12 text-center md:px-12">
                   <p
                     className="mt-10 lg:mt-12

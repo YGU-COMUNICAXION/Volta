@@ -2,7 +2,6 @@
 import Layout from "../layout/Layout.astro";
 import AboutHero from "@components/about/AboutHero.astro";
 import AboutStrengths from "@components/about/AboutStrengths.astro";
-import AboutStrategy from "@components/about/AboutStrategy.astro";
 import AboutCompanies from "@components/about/AboutCompanies.astro";
 import AboutClients from "@components/about/AboutClients.astro";
 import AboutEvents from "@components/about/AboutEvents.astro";
@@ -23,14 +22,22 @@ import sujioCardImage from "@assets/img/about-us/SujioCard.jpg";
 import hhgmCardImage from "@assets/img/about-us/HHGMCard.jpg";
 import sujioGenerationCardImage from "@assets/img/about-us/SujioGenerationCard.jpg";
 import trendIcon from "@assets/svg/about-us/trend-up.svg";
+import factoryIcon from "@assets/svg/about-us/icon_factory.svg";
+import carIcon from "@assets/svg/about-us/icon_car.svg";
+import buildingsIcon from "@assets/svg/about-us/icon_buildings.svg";
 import ContactCta from "@components/home/ContactCta.astro";
 
 const strengths = [
-  "Equipo con +80 años de experiencia.",
-  "Presencia internacional y una sólida operación en México.",
-  "Promovemos prácticas que favorezcan la eficiencia energética.",
-  "Evaluamos el uso de energías limpias para brindar soluciones eficientes, confiables y sostenibles.",
-  "Facilitamos el desarrollo de proyectos de gran escala que impulsen el crecimiento nacional y regional.",
+  "Facilitamos el desarrollo de <b>proyectos de gran escala</b> que impulsen el crecimiento nacional y regional.",
+  "Presencia <b>internacional</b> y una sólida operación en <b>México.</b>",
+  "Promovemos prácticas que favorecen la <b>eficiencia energética.</b>",
+  "Evaluamos el uso de <b>energías limpias</b> para brindar soluciones eficientes, <b>confiables y sostenibles.</b>",
+  "Equipo con <b>+80 años de experiencia</b>",
+];
+
+const strategyLines = [
+  "Nuestras estrategias promueven la <b>reducción de emisiones</b>, alineando nuestras acciones",
+  "con los objetivos globales de <b>descarbonización</b>. De esta manera, contribuimos al desarrollo de infraestructura que respalda una <b>transición energética, realista y responsable.</b>",
 ];
 
 const companies = [
@@ -89,12 +96,31 @@ const companies = [
 ];
 
 const clientSegments = [
-  "Empresas que prestan servicios",
-  "Parques industriales y polos de desarrollo",
-  "Proveedores de espacios logísticos de almacenamiento, incluidos centros de datos.",
-  "Sector Automotriz (proveedores Tier 1 y Tier 2)",
-  "Industria alimentaria y agropecuaria",
-  "Manufacturas y empresas de transformación",
+  {
+    title: "Manufacturas",
+    description: "y empresas de transformación",
+    icon: factoryIcon,
+  },
+  {
+    title: "Sector Automotriz",
+    description: "(proveedores Tier 1 y Tier 2)",
+    icon: carIcon,
+  },
+  {
+    title: "Industria alimentaria",
+    description: "y agropecuaria",
+    icon: factoryIcon,
+  },
+  {
+    title: "Parques industriales",
+    description: "y polos de desarrollo",
+    icon: factoryIcon,
+  },
+  {
+    title: "Proveedores de espacios logísticos",
+    description: "de almacenamiento, incluidos centros de datos.",
+    icon: buildingsIcon,
+  },
 ];
 
 const events = [
@@ -124,9 +150,7 @@ const presenceImages = [
     items={strengths}
     icon={trendIcon}
     backgroundImage={parallaxImage}
-  />
-  <AboutStrategy
-    text="Nuestras estrategias promueven la <b>reducción de emisiones</b>, alineando nuestras acciones <br/><br/> con los objetivos globales de <b>descarbonización</b>. De esta manera, contribuimos al desarrollo de infraestructura que respalda una <b>transición energética, realista y responsable.</b>"
+    textLines={strategyLines}
   />
   <AboutCompanies companies={companies} placeholderImage={placeholderImage} />
   <AboutClients segments={clientSegments} />
